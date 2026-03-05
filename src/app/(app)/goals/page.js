@@ -10,7 +10,7 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/lib/supabase';
 import Modal from '@/components/Modal';
-import { generateGoals } from '@/lib/sampleData';
+
 import styles from './goals.module.css';
 
 const categoryIcons = {
@@ -56,13 +56,10 @@ export default function GoalsPage() {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (data && data.length > 0) {
-        setGoals(data);
-      } else {
-        setGoals(generateGoals());
-      }
-    } catch {
-      setGoals(generateGoals());
+      setGoals(data || []);
+    } catch (err) {
+      console.error('Error loading goals:', err);
+      setGoals([]);
     } finally {
       setLoading(false);
     }

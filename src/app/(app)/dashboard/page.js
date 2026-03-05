@@ -236,7 +236,11 @@ export default function DashboardPage() {
             </a>
           </div>
           <div className={styles.recentList}>
-            {recentWorkouts.map((workout, i) => (
+            {recentWorkouts.length === 0 ? (
+              <p style={{ color: 'var(--text-tertiary)', textAlign: 'center', padding: 'var(--space-6) 0', fontSize: '0.9rem' }}>
+                No workouts yet. Start logging!
+              </p>
+            ) : recentWorkouts.map((workout, i) => (
               <motion.div
                 key={workout.id}
                 className={styles.recentItem}

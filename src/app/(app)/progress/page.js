@@ -12,11 +12,7 @@ import { supabase } from '@/lib/supabase';
 import ChartCard from '@/components/charts/ChartCard';
 import WeightTrendChart from '@/components/charts/WeightTrendChart';
 import CalorieBurnChart from '@/components/charts/CalorieBurnChart';
-import {
-  generateWeightTrend,
-  generateCalorieBurn,
-  generateWorkoutTypes,
-} from '@/lib/sampleData';
+
 import styles from './progress.module.css';
 
 const periods = ['1W', '1M', '3M', '6M', '1Y'];
@@ -59,26 +55,42 @@ export default function ProgressPage() {
 
   const loadData = async () => {
     try {
-      setWeightData(generateWeightTrend(periodToWeeks(period)));
-      setCalorieData(generateCalorieBurn(periodToDays(period)));
-      
-      setMonthlyData([
-        { month: 'Oct', strength: 12, cardio: 8, flexibility: 4 },
-        { month: 'Nov', strength: 15, cardio: 10, flexibility: 5 },
-        { month: 'Dec', strength: 10, cardio: 12, flexibility: 3 },
-        { month: 'Jan', strength: 18, cardio: 9, flexibility: 6 },
-        { month: 'Feb', strength: 20, cardio: 14, flexibility: 7 },
-        { month: 'Mar', strength: 16, cardio: 11, flexibility: 8 },
-      ]);
+      const days = periodToDays(period);
+      const since = new Date();
+      since.setDate(since.getDate() - days);
 
-      setRecords([
-        { exercise: 'Bench Press', value: '100 kg', date: 'Feb 14, 2026', icon: '🏋️' },
-        { exercise: 'Deadlift', value: '160 kg', date: 'Jan 28, 2026', icon: '💪' },
-        { exercise: '5K Run', value: '22:30', date: 'Feb 20, 2026', icon: '🏃' },
-        { exercise: 'Plank Hold', value: '4:15', date: 'Mar 1, 2026', icon: '🧘' },
-      ]);
-    } catch {
-      // fallback
+      const { data: workouts } = await supabase
+        .from('workouts')
+        .select('*')
+        .gte('completed_at', since.toISOString())
+        .order('completed_at', { ascending: true });
+
+      if (workouts && workouts.length > 0) {
+        // Build calorie data from real workouts
+        setCalorieData(workouts.map(w => ({
+          day: new Date(w.completed_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+          calories: w.calories_burned || 0,
+        })));
+
+        // Monthly breakdown
+        const monthly = {};
+        workouts.forEach(w => {
+          const month = new Date(w.completed_at).toLocaleDateString('en-US', { month: 'short' });
+          if (!monthly[month]) monthly[month] = { month, strength: 0, cardio: 0, flexibility: 0 };
+          if (w.type === 'strength') monthly[month].strength++;
+          else if (w.type === 'cardio') monthly[month].cardio++;
+          else if (w.type === 'flexibility') monthly[month].flexibility++;
+        });
+        setMonthlyData(Object.values(monthly));
+      } else {
+        setCalorieData([]);
+        setMonthlyData([]);
+      }
+
+      setWeightData([]);
+      setRecords([]);
+    } catch (err) {
+      console.error('Error loading progress data:', err);
     } finally {
       setLoading(false);
     }
