@@ -27,6 +27,11 @@
   align-items: start;
 }
 
+.contentColumn {
+  display: grid;
+  gap: var(--space-5);
+}
+
 .profileCard {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -98,6 +103,10 @@
   gap: var(--space-4);
 }
 
+.fullWidthField {
+  grid-column: 1 / -1;
+}
+
 .prefItem {
   display: flex;
   align-items: center;
@@ -138,8 +147,16 @@
     position: static;
   }
 
+  .contentColumn {
+    gap: var(--space-4);
+  }
+
   .fieldGrid {
     grid-template-columns: 1fr;
+  }
+
+  .fullWidthField {
+    grid-column: auto;
   }
 
   .prefItem {
