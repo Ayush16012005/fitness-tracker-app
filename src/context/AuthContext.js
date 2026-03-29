@@ -68,14 +68,17 @@ export function AuthProvider({ children }) {
     getSession();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
         setUser(session?.user ?? null);
+        setLoading(false);
+
         if (session?.user) {
-          await fetchProfile(session.user.id);
+          // Avoid awaiting Supabase calls inside the auth listener. It can stall
+          // sign-in/sign-out flows because the callback is expected to stay sync.
+          void fetchProfile(session.user.id);
         } else {
           setProfile(null);
         }
-        setLoading(false);
       }
     );
 
