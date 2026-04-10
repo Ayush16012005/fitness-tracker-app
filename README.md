@@ -62,3 +62,8 @@ npm run dev
 - `npm run build` - build production app
 - `npm run start` - run production server
 - `npm run lint` - run ESLint
+
+## Contributers
+- ShlokPathak28
+- Ayush-otcom
+- Ayush16012005
