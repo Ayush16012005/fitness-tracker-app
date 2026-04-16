@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#8ff5ff",
+                        "on-secondary-fixed": "#500086",
+                        "on-tertiary-fixed": "#003f43",
+                        "surface-container-high": "#201f1f",
+                        "on-tertiary": "#005d63",
+                        "on-secondary": "#340059",
+                        "surface": "#0e0e0e",
+                        "inverse-surface": "#fcf9f8",
+                        "tertiary-container": "#00eefc",
+                        "on-tertiary-container": "#005359",
+                        "surface-variant": "#262626",
+                        "on-primary-fixed-variant": "#55004f",
+                        "secondary-fixed-dim": "#ddb3ff",
+                        "secondary-dim": "#a533ff",
+                        "on-secondary-fixed-variant": "#7900c6",
+                        "on-primary": "#590053",
+                        "primary-fixed": "#ff5eeb",
+                        "on-surface-variant": "#adaaaa",
+                        "tertiary-fixed": "#00eefc",
+                        "tertiary-fixed-dim": "#00deec",
+                        "surface-container": "#1a1919",
+                        "error-container": "#a70138",
+                        "surface-dim": "#0e0e0e",
+                        "surface-container-lowest": "#000000",
+                        "primary": "#ff7eea",
+                        "on-secondary-container": "#fff5ff",
+                        "inverse-primary": "#ad00a1",
+                        "surface-container-highest": "#262626",
+                        "primary-fixed-dim": "#f93ee6",
+                        "outline-variant": "#484847",
+                        "on-primary-container": "#450040",
+                        "surface-container-low": "#131313",
+                        "on-error-container": "#ffb2b9",
+                        "surface-bright": "#2c2c2c",
+                        "outline": "#767575",
+                        "inverse-on-surface": "#565555",
+                        "primary-dim": "#ff57eb",
+                        "tertiary-dim": "#00deec",
+                        "surface-tint": "#ff7eea",
+                        "error": "#ff6e84",
+                        "secondary-fixed": "#e7c5ff",
+                        "on-surface": "#ffffff",
+                        "secondary": "#c47fff",
+                        "on-primary-fixed": "#000000",
+                        "secondary-container": "#8c00e5",
+                        "on-error": "#490013",
+                        "on-tertiary-fixed-variant": "#005e64",
+                        "background": "#0e0e0e",
+                        "on-background": "#ffffff",
+                        "primary-container": "#ff5eeb",
+                        "error-dim": "#d73357"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .neon-glow-primary:hover { box-shadow: 0 0 20px 2px rgba(255, 126, 234, 0.4); }
+        .glass-panel { backdrop-filter: blur(24px); border: 1px solid rgba(72, 72, 71, 0.15); }
+        .kinetic-bg { background: radial-gradient(circle at 50% 50%, #1a1919 0%, #0e0e0e 100%); }
+        .accent-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(140, 0, 229, 0.15) 0%, rgba(0,0,0,0) 70%); border-radius: 100%; pointer-events: none; }
+        @media (max-width: 768px) {
+            header { padding: 1rem !important; }
+            main { padding-left: 1rem !important; padding-right: 1rem !important; }
+            h1 { font-size: 2.25rem !important; line-height: 1.05 !important; }
+            .gap-12 { gap: 1rem !important; }
+            .p-10, .p-12 { padding: 1.25rem !important; }
+            footer { padding: 1.25rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary overflow-x-hidden min-h-screen flex flex-col">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto bg-transparent backdrop-blur-xl">
+<div class="text-2xl font-black text-white italic tracking-tighter font-['Plus_Jakarta_Sans']">FitTrack</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-neutral-400 hover:text-white transition-colors font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Features</a>
+</nav>
+<div class="flex items-center gap-6">
+<a class="text-neutral-400 hover:text-white transition-colors font-['Plus_Jakarta_Sans'] tracking-tight" href="/login">Log In</a>
+<a class="bg-primary text-on-primary-fixed px-8 py-3 rounded-full font-bold hover:bg-primary-fixed transition-all scale-95 hover:scale-100 duration-200 neon-glow-primary" href="/signup">Join Now</a>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex items-center justify-center relative pt-24 pb-12 overflow-hidden kinetic-bg">
+<!-- Abstract Kinetic Elements -->
+<div class="accent-glow top-[-10%] left-[-10%]"></div>
+<div class="accent-glow bottom-[-20%] right-[-10%]"></div>
+<div class="container max-w-[1440px] px-8 flex flex-col lg:flex-row items-center gap-16 relative z-10">
+<!-- Content Left: Editorial Hook -->
+<div class="w-full lg:w-1/2 space-y-8">
+<div class="inline-flex items-center gap-3 px-4 py-2 bg-secondary-container/20 rounded-full border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-xs font-label uppercase tracking-widest text-secondary font-semibold">Join the Kinetic Elite</span>
+</div>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none italic">
+                    YOUR<br/><span class="text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary">ASCENT</span><br/>BEGINS.
+                </h1>
+<p class="text-on-surface-variant text-lg max-w-md font-body leading-relaxed">
+                    Step into the digital gallery of peak performance. Advanced biometrics meet high-end editorial design.
+                </p>
+<div class="flex gap-12 pt-4">
+<div>
+<div class="text-3xl font-bold text-white tracking-tight">500k+</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-label">Athletes</div>
+</div>
+<div>
+<div class="text-3xl font-bold text-white tracking-tight">99.9%</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-label">Accuracy</div>
+</div>
+</div>
+</div>
+<!-- Content Right: Registration Card -->
+<div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+<div class="w-full max-w-[500px] glass-panel bg-surface-container-low/40 p-10 rounded-[3rem] relative shadow-2xl">
+<div class="space-y-6">
+<div class="text-center mb-10">
+<h2 class="text-3xl font-bold text-white tracking-tight">Create Account</h2>
+<p class="text-on-surface-variant mt-2">Enter your details to synchronize</p>
+</div>
+<form class="space-y-5" id="signup-form">
+    <div class="group">
+        <label class="text-[0.7rem] uppercase tracking-widest text-neutral-500 mb-2 block font-label px-4">Full Name</label>
+        <div class="relative">
+            <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-neutral-500 group-focus-within:text-tertiary transition-colors">person</span>
+            <input class="w-full bg-surface-container-highest border-none rounded-full py-4 pl-14 pr-6 text-on-surface placeholder:text-neutral-600 focus:ring-1 focus:ring-tertiary/40 transition-all outline-none" placeholder="Alex Sterling" type="text" id="fullname" required/>
+</div>
+</div>
+<div class="group">
+<label class="text-[0.7rem] uppercase tracking-widest text-neutral-500 mb-2 block font-label px-4">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-neutral-500 group-focus-within:text-tertiary transition-colors">alternate_email</span>
+<input class="w-full bg-surface-container-highest border-none rounded-full py-4 pl-14 pr-6 text-on-surface placeholder:text-neutral-600 focus:ring-1 focus:ring-tertiary/40 transition-all outline-none" placeholder="alex@fittrack.com" type="email" id="email" required/>
+</div>
+</div>
+<div class="group">
+<label class="text-[0.7rem] uppercase tracking-widest text-neutral-500 mb-2 block font-label px-4">Password</label>
+        <div class="relative">
+            <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-neutral-500 group-focus-within:text-tertiary transition-colors">lock</span>
+            <input class="w-full bg-surface-container-highest border-none rounded-full py-4 pl-14 pr-14 text-on-surface placeholder:text-neutral-600 focus:ring-1 focus:ring-tertiary/40 transition-all outline-none" placeholder="••••••••" type="password" id="password" required/>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-white" id="toggle-password" type="button">
+                <span class="material-symbols-outlined">visibility</span>
+            </button>
+</div>
+</div>
+<div class="group">
+<label class="text-[0.7rem] uppercase tracking-widest text-neutral-500 mb-2 block font-label px-4">Confirm Password</label>
+        <div class="relative">
+            <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-neutral-500 group-focus-within:text-tertiary transition-colors">verified_user</span>
+            <input class="w-full bg-surface-container-highest border-none rounded-full py-4 pl-14 pr-6 text-on-surface placeholder:text-neutral-600 focus:ring-1 focus:ring-tertiary/40 transition-all outline-none" placeholder="••••••••" type="password" id="confirm-password" required/>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-full text-on-primary-fixed font-black text-lg uppercase tracking-widest mt-8 transition-transform hover:scale-[1.02] active:scale-95 neon-glow-primary" type="submit" id="signup-btn">
+                                Create Account
+                            </button>
+    <p id="signup-error" class="text-error text-sm text-center -mt-4"></p>
+</form>
+<div class="relative py-4">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant/20"></div></div>
+<div class="relative flex justify-center text-xs uppercase tracking-tighter"><span class="bg-surface-container px-4 text-neutral-500">Or continue with</span></div>
+</div>
+<button class="w-full py-4 rounded-full bg-white/5 border border-outline-variant/20 flex items-center justify-center gap-3 hover:bg-white/10 transition-colors">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#ffffff"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#ffffff"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#ffffff"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#ffffff"></path>
+</svg>
+<span class="text-sm font-semibold tracking-wide">Continue with Google</span>
+</button>
+<p class="text-center text-sm text-on-surface-variant mt-8">
+                            Already part of the network? <a class="text-primary hover:text-secondary transition-colors font-bold" href="/login">Sign In</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Floating Image - Editorial Style -->
+<div class="absolute right-0 top-1/4 w-[400px] h-[600px] opacity-20 pointer-events-none hidden xl:block">
+<img alt="minimalist dynamic silhouette of an athlete in motion against a dark obsidian background with glowing magenta highlights" class="w-full h-full object-cover grayscale brightness-50 rounded-l-[5rem]" data-alt="minimalist dynamic silhouette of an athlete in motion against a dark obsidian background with glowing magenta highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABCoTR6b8r6McDoiQsoIorCTCPQp-uPFXIkdDrWCQcaHnU73EKelP8o6tXUDYW5xR8lDtm4CfmUMJqkFC_jfUU3KeE631WXhM0xxclxSZ4CXtSliDd7B_W12cFc-JDqKtU8yGc2yS93-3YYDkhUQGCr_xl0eyANofAdvNCcNnbOECfAAk1k5oazmEXZ9w1qj5EyhiK0uv1X8iQZzTibN4yWwD1n9SlUJ4g_IwZgr6PZazHndSBObmj1D-pcE0fOqup3uaFf3xIzQo"/>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 px-12 flex flex-col md:flex-row justify-between items-center gap-8 bg-[#131313] relative z-20">
+<div class="text-lg font-bold text-white font-['Plus_Jakarta_Sans']">FitTrack</div>
+<div class="flex gap-8">
+<a class="text-neutral-500 hover:text-white transition-colors text-sm uppercase tracking-widest font-['Plus_Jakarta_Sans']" href="/">Privacy Policy</a>
+<a class="text-neutral-500 hover:text-white transition-colors text-sm uppercase tracking-widest font-['Plus_Jakarta_Sans']" href="/">Terms of Service</a>
+<a class="text-neutral-500 hover:text-white transition-colors text-sm uppercase tracking-widest font-['Plus_Jakarta_Sans']" href="/">Support</a>
+</div>
+<div class="text-neutral-500 text-sm uppercase tracking-widest font-['Plus_Jakarta_Sans'] opacity-80">
+            © 2024 FitTrack. Obsidian Kineticism Edition.
+        </div>
+</footer>
+<!-- Magnetic Cursor Element (Mockup Placeholder) -->
+<div class="fixed top-0 left-0 w-8 h-8 border border-primary/40 rounded-full pointer-events-none z-[100] transition-transform duration-100 ease-out flex items-center justify-center opacity-0 lg:opacity-100">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+<script src="/js/auth.js"></script>
+</body></html>
+

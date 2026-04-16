@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitTrack | Goals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0e0e0e; color: #ffffff; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .glass-panel { background: rgba(38, 38, 38, 0.6); backdrop-filter: blur(24px); }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  @media (max-width: 768px) {
+    h2 { font-size: 2.25rem !important; }
+    .p-8 { padding: 1.25rem !important; }
+  }
+</style>
+<script id="tailwind-config">
+  tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary:'#ff7eea', secondary:'#c47fff', tertiary:'#8ff5ff', background:'#0e0e0e', surface:'#0e0e0e', 'surface-container':'#1a1919', 'surface-container-low':'#131313', 'surface-container-high':'#201f1f', 'surface-container-highest':'#262626', 'surface-variant':'#262626', 'on-surface':'#ffffff', 'on-surface-variant':'#adaaaa', 'on-primary-fixed':'#000000', outline:'#767575', 'outline-variant':'#484847' } } } }
+</script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<aside class="h-screen w-72 fixed left-0 top-0 z-50 bg-[#131313] flex flex-col py-8 border-r border-[#484847]/15">
+<div class="px-8 mb-12">
+<h1 class="text-xl font-black text-white tracking-tighter">FitTrack</h1>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/dashboard">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="dashboard">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/workout">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="fitness_center">fitness_center</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Workouts</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/progress">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="insights">insights</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Progress</span>
+</a>
+<a class="flex items-center gap-4 text-[#ff7eea] font-bold py-3 px-6 bg-gradient-to-r from-[#ff7eea]/10 to-transparent border-r-2 border-[#ff7eea]" href="/goals">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Goals</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/profile">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Profile</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-gradient-to-br from-[#ff7eea] to-[#c47fff] text-on-primary-fixed py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-primary/20 mb-8" onclick="window.location.href='/workout'">
+                Start Workout
+            </button>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white transition-colors" href="#" id="logout-btn" onclick="event.preventDefault();AuthService.logout()">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Sign Out</span>
+</a>
+</div>
+</aside>
+
+<main class="ml-72 p-12 max-w-[1600px] mx-auto pb-24">
+  <header class="w-full top-0 sticky z-40 bg-surface/80 backdrop-blur-md flex justify-between items-center px-6 py-6 md:px-12">
+    <h2 class="text-2xl font-black tracking-tighter text-on-surface">Goals</h2>
+    <button id="new-goal-btn" onclick="window.openGoalModal && window.openGoalModal()" class="bg-gradient-to-br from-primary to-secondary hover:brightness-110 text-on-primary-fixed px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest transition-all active:scale-95">+ New Goal</button>
+  </header>
+
+  <div class="px-6 md:px-12 mt-8 max-w-7xl mx-auto">
+    <section class="mb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-7">
+        <h2 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tight text-on-surface mb-4">Chase the <br/><span class="text-secondary italic">Velocity.</span></h2>
+        <p class="text-on-surface-variant text-lg max-w-md leading-relaxed">Track goals with real data. New accounts start at zero until you log progress.</p>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="bg-surface-container rounded-xl p-6">
+          <p class="font-label uppercase tracking-widest text-[0.7rem] text-on-surface-variant mb-2">Active Goals</p>
+          <div class="flex items-end gap-2"><span class="text-4xl font-bold text-on-surface" id="active-goal-count">0</span><span class="text-on-surface-variant mb-1 font-medium">goals</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section class="lg:col-span-8">
+        <h3 class="text-2xl font-bold tracking-tight mb-8">Active Goals</h3>
+        <div id="goals-grid" class="space-y-6">
+          <div class="bg-surface-container-low rounded-xl p-10 text-center">
+            <span class="material-symbols-outlined text-5xl text-on-surface-variant mb-3 block">emoji_events</span>
+            <p class="text-on-surface-variant">No goals yet — set your first goal to get started!</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lg:col-span-4">
+        <h3 class="text-2xl font-bold tracking-tight mb-8">Tips</h3>
+        <div class="space-y-4">
+          <div class="p-6 bg-surface-container-low rounded-xl border-l-4 border-tertiary">
+            <p class="font-bold text-sm">Set measurable targets</p>
+            <p class="text-xs text-on-surface-variant mt-1">Use numeric targets so progress can be tracked automatically.</p>
+          </div>
+          <div class="p-6 bg-surface-container-low rounded-xl border-l-4 border-primary">
+            <p class="font-bold text-sm">Update weekly</p>
+            <p class="text-xs text-on-surface-variant mt-1">Keep current values updated to maintain accurate completion percentages.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-[100] px-4" id="goal-modal">
+  <div class="glass-panel w-full max-w-lg rounded-xl p-8 border border-outline-variant/30">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl font-bold">Create Goal</h3>
+      <button id="close-goal-modal" class="text-on-surface-variant hover:text-white"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <form id="goal-form" class="space-y-4">
+      <input id="goal-title" class="w-full bg-surface-container-highest rounded-full px-5 py-3" placeholder="Goal title" required />
+      <select id="goal-type" class="w-full bg-surface-container-highest rounded-full px-5 py-3">
+        <option value="strength">Strength</option>
+        <option value="endurance">Endurance</option>
+        <option value="body_composition">Body Composition</option>
+      </select>
+      <input id="goal-target" type="number" step="0.1" class="w-full bg-surface-container-highest rounded-full px-5 py-3" placeholder="Target value" required />
+      <input id="goal-deadline" type="date" class="w-full bg-surface-container-highest rounded-full px-5 py-3" />
+      <button class="w-full bg-gradient-to-r from-primary to-secondary text-on-primary-fixed rounded-full py-3 font-bold" type="submit">Save Goal</button>
+      <p id="goal-form-error" class="text-error text-sm"></p>
+    </form>
+  </div>
+</div>
+
+<footer class="fixed bottom-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-4 bg-surface-container-low/60 backdrop-blur-3xl md:hidden rounded-t-xl">
+  <a class="text-on-surface-variant p-3" href="/dashboard"><span class="material-symbols-outlined">home</span></a>
+  <a class="text-on-surface-variant p-3" href="/progress"><span class="material-symbols-outlined">insights</span></a>
+  <a class="bg-surface-variant text-primary rounded-full p-3" href="/goals"><span class="material-symbols-outlined">event_note</span></a>
+  <a class="text-on-surface-variant p-3" href="/profile"><span class="material-symbols-outlined">person</span></a>
+</footer>
+
+<script src="/js/auth.js"></script>
+<script src="/js/goals.js"></script>
+</body></html>

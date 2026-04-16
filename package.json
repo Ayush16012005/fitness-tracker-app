@@ -1,34 +1,15 @@
 {
-  "name": "fitness-tracker-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "fittrack-app",
+  "version": "1.0.0",
+  "description": "FitTrack - Fitness Tracker PWA",
+  "main": "server/index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.5.0",
-    "@supabase/ssr": "^0.9.0",
-    "@supabase/supabase-js": "^2.98.0",
-    "date-fns": "^4.1.0",
-    "framer-motion": "^12.34.5",
-    "lucide-react": "^0.576.0",
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "recharts": "^3.7.0",
-    "three": "^0.183.2"
-  },
-  "devDependencies": {
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6"
-  },
-  "description": "A modern fitness tracking website built with Next.js where users can sign up, log workouts, track goals, and monitor progress with charts.",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
 }

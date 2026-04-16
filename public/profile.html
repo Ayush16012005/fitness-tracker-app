@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitTrack | Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-tertiary": "#005d63", "inverse-surface": "#fcf9f8", "secondary-dim": "#a533ff",
+                    "on-tertiary-container": "#005359", "surface-container-low": "#131313", "error": "#ff6e84",
+                    "on-primary-fixed": "#000000", "surface-container": "#1a1919", "surface-variant": "#262626",
+                    "surface-container-lowest": "#000000", "secondary": "#c47fff", "on-primary-fixed-variant": "#55004f",
+                    "tertiary-container": "#00eefc", "inverse-primary": "#ad00a1", "primary-fixed-dim": "#f93ee6",
+                    "secondary-container": "#8c00e5", "inverse-on-surface": "#565555", "on-surface": "#ffffff",
+                    "secondary-fixed-dim": "#ddb3ff", "primary-dim": "#ff57eb", "primary": "#ff7eea",
+                    "on-error-container": "#ffb2b9", "surface-container-high": "#201f1f", "on-error": "#490013",
+                    "on-tertiary-fixed": "#003f43", "tertiary": "#8ff5ff", "surface-dim": "#0e0e0e",
+                    "outline": "#767575", "on-tertiary-fixed-variant": "#005e64", "background": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#7900c6", "tertiary-fixed": "#00eefc", "on-primary": "#590053",
+                    "outline-variant": "#484847", "on-secondary-container": "#fff5ff", "primary-container": "#ff5eeb",
+                    "surface": "#0e0e0e", "on-secondary-fixed": "#500086", "error-container": "#a70138",
+                    "error-dim": "#d73357", "tertiary-fixed-dim": "#00deec", "on-primary-container": "#450040",
+                    "surface-tint": "#ff7eea", "surface-bright": "#2c2c2c", "primary-fixed": "#ff5eeb",
+                    "on-background": "#ffffff", "on-surface-variant": "#adaaaa", "secondary-fixed": "#e7c5ff",
+                    "surface-container-highest": "#262626", "tertiary-dim": "#00deec", "on-secondary": "#340059"
+                },
+                "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Plus Jakarta Sans"], "label": ["Plus Jakarta Sans"] }
+            },
+        }
+    }
+</script>
+<style>
+    body { background-color: #0e0e0e; font-family: 'Plus Jakarta Sans', sans-serif; color: #ffffff; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .neon-glow-primary { box-shadow: 0 0 20px rgba(255, 126, 234, 0.2); }
+    .kinetic-gradient { background: linear-gradient(135deg, #ff7eea 0%, #c47fff 100%); }
+    @media (max-width: 1024px) {
+        aside { position: static; width: 100%; height: auto; }
+        main { margin-left: 0 !important; padding: 1.25rem !important; }
+    }
+    @media (max-width: 768px) {
+        h1 { font-size: 2rem !important; line-height: 1.15 !important; }
+        .grid.grid-cols-12 { grid-template-columns: 1fr !important; gap: 1rem !important; }
+        .grid.grid-cols-3, .grid.grid-cols-2 { grid-template-columns: 1fr !important; }
+        .p-8, .p-10, .p-12 { padding: 1.25rem !important; }
+    }
+</style>
+</head>
+<body class="min-h-screen">
+<aside class="h-screen w-72 fixed left-0 top-0 z-50 bg-[#131313] flex flex-col py-8 border-r border-[#484847]/15">
+<div class="px-8 mb-12">
+<h1 class="text-xl font-black text-white tracking-tighter">FitTrack</h1>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all duration-200 hover:translate-x-1" href="/dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all duration-200 hover:translate-x-1" href="/workout">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Workouts</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all duration-200 hover:translate-x-1" href="/progress">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Progress</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all duration-200 hover:translate-x-1" href="/goals">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Goals</span>
+</a>
+<a class="flex items-center gap-4 text-[#ff7eea] font-bold py-3 px-6 bg-gradient-to-r from-[#ff7eea]/10 to-transparent border-r-2 border-[#ff7eea]" href="/profile">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Profile</span>
+</a>
+</nav>
+<div class="px-6 mb-8">
+<button onclick="window.location.href='/workout'" class="kinetic-gradient w-full py-4 rounded-full text-on-primary-fixed font-bold text-sm uppercase tracking-widest active:scale-95 transition-transform hover:brightness-110">
+Start Workout
+</button>
+</div>
+<div class="mt-auto">
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all" href="#" id="logout-btn" onclick="event.preventDefault();AuthService.logout()">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Sign Out</span>
+</a>
+</div>
+</aside>
+
+<main class="ml-72 min-h-screen p-12 bg-surface">
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
+<div class="flex gap-8 items-center">
+<div class="relative">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-high neon-glow-primary bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant">person</span>
+</div>
+</div>
+<div>
+<h1 class="text-5xl font-extrabold tracking-tighter mb-2" id="profile-name">Loading...</h1>
+<div class="flex items-center gap-4">
+<span class="bg-surface-container-highest px-4 py-1 rounded-full text-[0.7rem] font-bold uppercase tracking-widest text-tertiary">FitTrack Member</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 min-w-[160px]">
+<p class="label-md uppercase tracking-widest text-on-surface-variant mb-1 text-xs">Current Streak</p>
+<p class="text-4xl font-black text-secondary"><span id="profile-streak">0</span> <span class="text-lg font-medium text-on-surface-variant">Days</span></p>
+</div>
+</div>
+</header>
+
+<div class="grid grid-cols-12 gap-8">
+<section class="col-span-8 space-y-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight mb-4">My Stats</h2>
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-surface-container p-8 rounded-xl text-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-3 block">fitness_center</span>
+<p class="text-3xl font-black" id="profile-total-workouts">0</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-2">Workouts</p>
+</div>
+<div class="bg-surface-container p-8 rounded-xl text-center">
+<span class="material-symbols-outlined text-4xl text-secondary mb-3 block">timer</span>
+<p class="text-3xl font-black" id="profile-total-duration">0 min</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-2">Total Time</p>
+</div>
+<div class="bg-surface-container p-8 rounded-xl text-center">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-3 block">local_fire_department</span>
+<p class="text-3xl font-black" id="profile-total-calories">0</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-2">Calories</p>
+</div>
+</div>
+</div>
+
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight">Body Metrics</h2>
+<p class="text-sm text-on-surface-variant mt-2">Update your name, height, and weight. The app stores everything in metric and converts it in the UI when needed.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high p-2 rounded-full">
+<button id="unit-metric-btn" type="button" class="px-4 py-2 rounded-full bg-primary text-on-primary-fixed font-bold text-xs uppercase tracking-widest">Metric</button>
+<button id="unit-imperial-btn" type="button" class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-bold text-xs uppercase tracking-widest">Imperial</button>
+</div>
+</div>
+
+<form id="profile-form" class="space-y-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3" for="full-name">Change Name</label>
+<input id="full-name" type="text" class="w-full rounded-xl border border-outline-variant/20 bg-surface-container px-4 py-4 text-white focus:border-primary focus:ring-primary" placeholder="Your name"/>
+</div>
+
+<div id="metric-fields" class="grid grid-cols-2 gap-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3" for="weight-kg">Weight (kg)</label>
+<input id="weight-kg" type="number" min="1" step="0.1" class="w-full rounded-xl border border-outline-variant/20 bg-surface-container px-4 py-4 text-white focus:border-primary focus:ring-primary" placeholder="70"/>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3" for="height-cm">Height (cm)</label>
+<input id="height-cm" type="number" min="80" max="260" step="0.1" class="w-full rounded-xl border border-outline-variant/20 bg-surface-container px-4 py-4 text-white focus:border-primary focus:ring-primary" placeholder="175"/>
+</div>
+</div>
+
+<div id="imperial-fields" class="hidden space-y-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3" for="weight-lbs">Weight (lbs)</label>
+<input id="weight-lbs" type="number" min="1" step="0.1" class="w-full rounded-xl border border-outline-variant/20 bg-surface-container px-4 py-4 text-white focus:border-primary focus:ring-primary" placeholder="154"/>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-surface-container p-5 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="height-feet">Height Feet</label>
+<span id="feet-value" class="text-sm font-bold text-primary">5 ft</span>
+</div>
+<input id="height-feet" type="range" min="3" max="8" step="1" class="w-full accent-primary"/>
+</div>
+<div class="bg-surface-container p-5 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="height-inches">Height Inches</label>
+<span id="inches-value" class="text-sm font-bold text-secondary">8 in</span>
+</div>
+<input id="height-inches" type="range" min="0" max="11" step="1" class="w-full accent-secondary"/>
+</div>
+</div>
+</div>
+
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Body Mass Index</p>
+<p class="text-4xl font-black text-tertiary" id="profile-bmi">--</p>
+</div>
+<p class="text-sm text-on-surface-variant max-w-sm md:text-right" id="profile-bmi-status">Add your height and weight to calculate BMI.</p>
+</div>
+</div>
+
+<div class="flex flex-col gap-3">
+<p id="profile-form-error" class="text-sm text-error"></p>
+<p id="profile-form-success" class="text-sm text-tertiary"></p>
+<button id="profile-save-btn" type="submit" class="kinetic-gradient w-full md:w-auto px-8 py-4 rounded-full text-on-primary-fixed font-bold text-sm uppercase tracking-widest active:scale-95 transition-transform hover:brightness-110">Save Changes</button>
+</div>
+</form>
+</div>
+</section>
+
+<section class="col-span-4 space-y-8">
+<div class="bg-surface-container p-8 rounded-xl">
+<h3 class="font-bold text-lg mb-6">Profile Snapshot</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Displayed Name</p>
+<p class="text-lg font-bold text-white" id="profile-sidebar-name">Loading...</p>
+</div>
+<span class="material-symbols-outlined text-primary">face</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Member Status</p>
+<p class="text-sm font-medium text-white">FitTrack Member</p>
+</div>
+<span class="material-symbols-outlined text-tertiary">verified</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Current BMI</p>
+<p class="text-lg font-bold text-white" id="profile-sidebar-bmi">--</p>
+</div>
+<span class="material-symbols-outlined text-secondary">monitor_weight</span>
+</div>
+</div>
+</div>
+<div class="p-4">
+<button class="text-error text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+Delete Account
+</button>
+</div>
+</section>
+</div>
+
+<section class="mt-12 bg-surface-container p-8 rounded-xl">
+<h3 class="font-bold text-lg mb-6">Account Settings</h3>
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+<div>
+<p class="text-sm font-medium">Email Address</p>
+<p class="text-xs text-on-surface-variant" id="profile-email">Loading...</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script src="/js/auth.js"></script>
+<script src="/js/profile.js"></script>
+</body></html>

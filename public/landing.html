@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitTrack | Track. Visualize. Achieve.</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-tertiary": "#005d63", "inverse-surface": "#fcf9f8", "secondary-dim": "#a533ff",
+                    "on-tertiary-container": "#005359", "surface-container-low": "#131313", "error": "#ff6e84",
+                    "on-primary-fixed": "#000000", "surface-container": "#1a1919", "surface-variant": "#262626",
+                    "surface-container-lowest": "#000000", "secondary": "#c47fff", "on-primary-fixed-variant": "#55004f",
+                    "tertiary-container": "#00eefc", "inverse-primary": "#ad00a1", "primary-fixed-dim": "#f93ee6",
+                    "secondary-container": "#8c00e5", "inverse-on-surface": "#565555", "on-surface": "#ffffff",
+                    "secondary-fixed-dim": "#ddb3ff", "primary-dim": "#ff57eb", "primary": "#ff7eea",
+                    "on-error-container": "#ffb2b9", "surface-container-high": "#201f1f", "on-error": "#490013",
+                    "on-tertiary-fixed": "#003f43", "tertiary": "#8ff5ff", "surface-dim": "#0e0e0e",
+                    "outline": "#767575", "on-tertiary-fixed-variant": "#005e64", "background": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#7900c6", "tertiary-fixed": "#00eefc", "on-primary": "#590053",
+                    "outline-variant": "#484847", "on-secondary-container": "#fff5ff", "primary-container": "#ff5eeb",
+                    "surface": "#0e0e0e", "on-secondary-fixed": "#500086", "error-container": "#a70138",
+                    "error-dim": "#d73357", "tertiary-fixed-dim": "#00deec", "on-primary-container": "#450040",
+                    "surface-tint": "#ff7eea", "surface-bright": "#2c2c2c", "primary-fixed": "#ff5eeb",
+                    "on-background": "#ffffff", "on-surface-variant": "#adaaaa", "secondary-fixed": "#e7c5ff",
+                    "surface-container-highest": "#262626", "tertiary-dim": "#00deec", "on-secondary": "#340059"
+                },
+                "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Plus Jakarta Sans"], "label": ["Plus Jakarta Sans"] }
+            },
+        },
+    }
+</script>
+<style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0e0e0e; color: #ffffff; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .hero-gradient { background: linear-gradient(135deg, #ff7eea 0%, #c47fff 50%, #8ff5ff 100%); }
+    .kinetic-gradient { background: linear-gradient(135deg, #ff7eea 0%, #c47fff 100%); }
+    .kinetic-pulse { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    @media (max-width: 768px) {
+        .hero-title { font-size: 4rem !important; }
+        .nav-desktop { display: none !important; }
+    }
+</style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30">
+
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-stone-950/80 backdrop-blur-xl flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto border-b border-white/5">
+<div class="text-2xl font-black italic tracking-tighter text-[#ff7eea]">FITTRACK</div>
+<div class="nav-desktop hidden md:flex items-center gap-10">
+    <a class="nav-link text-stone-400 font-medium hover:text-stone-200 transition-all duration-300 hover:scale-105 tracking-widest text-[0.75rem] uppercase" href="#workouts">Workouts</a>
+    <a class="nav-link text-stone-400 font-medium hover:text-stone-200 transition-all duration-300 hover:scale-105 tracking-widest text-[0.75rem] uppercase" href="#metrics">Metrics</a>
+    <a class="nav-link text-stone-400 font-medium hover:text-stone-200 transition-all duration-300 hover:scale-105 tracking-widest text-[0.75rem] uppercase" href="#goals">Goals</a>
+</div>
+<div class="flex gap-4 items-center">
+    <a href="/login" class="text-on-surface-variant text-sm font-medium hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Log in</a>
+    <a href="/signup" class="kinetic-gradient text-on-primary-fixed text-sm font-bold px-6 py-3 rounded-full hover:brightness-110 transition-all shadow-[0_0_20px_rgba(255,126,234,0.3)]">Get Started</a>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-24" id="hero">
+<div class="absolute inset-0 bg-gradient-to-br from-stone-950 via-[#0e0e0e] to-[#1a0a14]"></div>
+<div class="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Floating Abstract Geometry -->
+<div class="absolute bottom-10 left-10 opacity-20 border-l border-t border-outline-variant w-40 h-40 rounded-tl-xl"></div>
+<div class="absolute top-40 right-20 opacity-20 border-r border-b border-outline-variant w-64 h-64 rounded-br-xl"></div>
+<div class="relative z-10 text-center max-w-5xl px-6">
+    <span class="label-md uppercase tracking-[0.2em] text-secondary font-bold mb-6 block">The FitTrack Editorial</span>
+    <h1 class="text-[5rem] md:text-[7rem] leading-[0.9] font-black tracking-tighter mb-8 italic hero-title">
+        LOG. <span class="text-transparent bg-clip-text hero-gradient">VISUALIZE.</span><br/>ACHIEVE.
+    </h1>
+    <p class="text-on-surface-variant text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+        Experience obsidian-grade performance tracking. A high-end digital gallery for your physical evolution.
+    </p>
+    <div class="flex gap-4 justify-center">
+        <a href="/signup" class="bg-primary text-on-primary-fixed px-10 py-5 rounded-full text-lg font-extrabold hover:scale-105 transition-all duration-300 active:scale-95 flex items-center gap-2 shadow-[0_0_30px_rgba(255,126,234,0.4)]">
+            Start Your Session <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+    </div>
+</div>
+</section>
+
+<!-- Workout Logging Section -->
+<section class="py-32 px-12 bg-surface" id="workouts">
+<div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 space-y-8 sticky top-32">
+    <div class="inline-flex items-center gap-3 bg-secondary-container/20 px-4 py-2 rounded-full">
+        <div class="w-2 h-2 rounded-full bg-secondary kinetic-pulse"></div>
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Active Session</span>
+    </div>
+    <h2 class="text-5xl font-black tracking-tight leading-tight">PRECISION<br/>INPUT ENGINE.</h2>
+    <p class="text-on-surface-variant text-lg leading-relaxed">Designed for zero friction. Record every rep, set, and tempo change in a fluid, asymmetrical interface that respects your momentum.</p>
+</div>
+<div class="lg:col-span-7 bg-surface-container-low p-10 rounded-xl border border-outline-variant/10 shadow-2xl relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+    <div class="space-y-10">
+        <div class="flex justify-between items-end">
+            <div>
+                <h3 class="text-2xl font-bold">Barbell Bench Press</h3>
+                <p class="text-on-surface-variant">Upper body compound lift — push pattern.</p>
+            </div>
+            <span class="material-symbols-outlined text-secondary text-4xl">fitness_center</span>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="space-y-2">
+                <label class="text-[0.65rem] font-black uppercase tracking-widest text-on-surface-variant ml-4">Weight (KG)</label>
+                <input class="w-full bg-surface-container-highest border-none rounded-full px-6 py-4 text-xl font-bold focus:ring-1 focus:ring-tertiary/40" placeholder="100" type="number"/>
+            </div>
+            <div class="space-y-2">
+                <label class="text-[0.65rem] font-black uppercase tracking-widest text-on-surface-variant ml-4">Reps</label>
+                <input class="w-full bg-surface-container-highest border-none rounded-full px-6 py-4 text-xl font-bold focus:ring-1 focus:ring-tertiary/40" placeholder="8" type="number"/>
+            </div>
+            <div class="space-y-2">
+                <label class="text-[0.65rem] font-black uppercase tracking-widest text-on-surface-variant ml-4">RPE</label>
+                <input class="w-full bg-surface-container-highest border-none rounded-full px-6 py-4 text-xl font-bold focus:ring-1 focus:ring-tertiary/40" placeholder="9" type="number"/>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-on-surface-variant">Rest Timer</span>
+                <span class="text-tertiary font-bold">01:42</span>
+            </div>
+            <div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+                <div class="h-full bg-tertiary w-[60%] rounded-full shadow-[0_0_10px_#8ff5ff]"></div>
+            </div>
+        </div>
+        <button class="w-full bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/20 py-5 rounded-full font-bold transition-all duration-300 flex justify-center items-center gap-3">
+            <span class="material-symbols-outlined">add_circle</span> Log This Set
+        </button>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Data Visualization Section -->
+<section class="py-32 bg-surface-container-lowest relative" id="metrics">
+<div class="px-12 max-w-[1400px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+    <div class="max-w-xl">
+        <h2 class="text-5xl font-black tracking-tight mb-6">PROGRESS<br/>IN MOTION.</h2>
+        <p class="text-on-surface-variant text-lg">Visual intelligence that translates raw data into editorial-grade insights. Track your volume, intensity, and hypertrophy trends.</p>
+    </div>
+</div>
+<!-- Bento Grid Charts -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Large Chart -->
+<div class="md:col-span-2 bg-surface-container p-10 rounded-xl relative h-[450px] flex flex-col justify-between overflow-hidden group">
+    <div class="flex justify-between items-start relative z-10">
+        <div>
+            <h4 class="text-xl font-bold">Total Volume Trend</h4>
+            <p class="text-tertiary font-bold">+14.2% vs last month</p>
+        </div>
+        <span class="material-symbols-outlined text-outline-variant">analytics</span>
+    </div>
+    <!-- Mock SVG Chart -->
+    <div class="absolute inset-x-0 bottom-0 h-2/3">
+        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 200">
+            <defs>
+                <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#ff7eea" stop-opacity="0.3"></stop>
+                    <stop offset="100%" stop-color="#ff7eea" stop-opacity="0"></stop>
+                </linearGradient>
+            </defs>
+            <path d="M0 180 Q 50 160 100 170 T 200 120 T 300 140 T 400 80 L 400 200 L 0 200 Z" fill="url(#chartGradient)"></path>
+            <path class="drop-shadow-[0_0_15px_rgba(255,126,234,0.5)]" d="M0 180 Q 50 160 100 170 T 200 120 T 300 140 T 400 80" fill="none" stroke="#ff7eea" stroke-width="4"></path>
+        </svg>
+    </div>
+</div>
+<!-- Vertical Card -->
+<div class="bg-surface-container p-10 rounded-xl flex flex-col justify-between relative overflow-hidden group">
+    <div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl transition-all duration-500 group-hover:scale-150"></div>
+    <div>
+        <h4 class="text-xl font-bold mb-1">Estimated 1RM</h4>
+        <p class="text-on-surface-variant text-sm">Based on recent Bench Press</p>
+    </div>
+    <div class="my-10">
+        <div class="text-[5rem] font-black italic tracking-tighter text-secondary">125</div>
+        <div class="text-xl font-bold uppercase tracking-widest text-on-surface-variant -mt-4">Kilograms</div>
+    </div>
+    <button class="text-secondary font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
+        View breakdown <span class="material-symbols-outlined">trending_up</span>
+    </button>
+</div>
+<!-- Small Stats -->
+<div class="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10">
+    <p class="label-md uppercase tracking-widest text-on-surface-variant mb-2">Consistency</p>
+    <div class="text-3xl font-bold">24 Days</div>
+    <div class="flex gap-1 mt-4">
+        <div class="flex-1 h-2 bg-primary rounded-full"></div>
+        <div class="flex-1 h-2 bg-primary rounded-full"></div>
+        <div class="flex-1 h-2 bg-primary rounded-full"></div>
+        <div class="flex-1 h-2 bg-surface-container-highest rounded-full"></div>
+        <div class="flex-1 h-2 bg-primary rounded-full"></div>
+    </div>
+</div>
+<div class="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10">
+    <p class="label-md uppercase tracking-widest text-on-surface-variant mb-2">Recovery Score</p>
+    <div class="text-3xl font-bold">88%</div>
+    <div class="h-2 bg-surface-container-highest w-full rounded-full mt-4">
+        <div class="h-full bg-tertiary w-[88%] rounded-full shadow-[0_0_10px_#8ff5ff]"></div>
+    </div>
+</div>
+<div class="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10">
+    <p class="label-md uppercase tracking-widest text-on-surface-variant mb-2">Active Time</p>
+    <div class="text-3xl font-bold">12.4h</div>
+    <p class="text-xs text-on-surface-variant mt-4">+2h since last week</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Goal Tracking Section -->
+<section class="py-32 px-12" id="goals">
+<div class="max-w-[1400px] mx-auto">
+<div class="flex flex-col md:flex-row gap-20">
+    <div class="md:w-1/3">
+        <h2 class="text-5xl font-black tracking-tight mb-8">ARCHITECT<br/>YOUR FUTURE.</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed mb-10">Set audacious targets and let the FitTrack engine track your progress. From strength milestones to body composition, your trajectory is mapped with precision.</p>
+        <a href="/signup" class="inline-block bg-secondary text-on-secondary-fixed px-8 py-4 rounded-full font-bold hover:scale-105 transition-all active:scale-95">Set New Goal</a>
+    </div>
+    <div class="md:w-2/3 grid grid-cols-1 gap-6">
+        <!-- Progress Card -->
+        <div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary group hover:bg-surface-container transition-all">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <span class="label-md uppercase tracking-[0.2em] text-primary font-bold">Strength Milestone</span>
+                    <h4 class="text-2xl font-bold mt-1">Deadlift 200kg</h4>
+                </div>
+                <div class="text-right">
+                    <span class="text-3xl font-black italic">85%</span>
+                    <p class="text-on-surface-variant text-xs">On track for March 24</p>
+                </div>
+            </div>
+            <div class="h-3 bg-surface-container-highest rounded-full overflow-hidden">
+                <div class="h-full bg-primary w-[85%] rounded-full transition-all duration-1000"></div>
+            </div>
+            <div class="mt-4 flex justify-between text-xs text-on-surface-variant uppercase tracking-widest">
+                <span>Started: Jan 12</span>
+                <span>Est. Completion: March 24</span>
+            </div>
+        </div>
+        <!-- Progress Card -->
+        <div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-tertiary group hover:bg-surface-container transition-all">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <span class="label-md uppercase tracking-[0.2em] text-tertiary font-bold">Body Composition</span>
+                    <h4 class="text-2xl font-bold mt-1">Target: 12% Body Fat</h4>
+                </div>
+                <div class="text-right">
+                    <span class="text-3xl font-black italic">60%</span>
+                    <p class="text-on-surface-variant text-xs">On track for May 15</p>
+                </div>
+            </div>
+            <div class="h-3 bg-surface-container-highest rounded-full overflow-hidden">
+                <div class="h-full bg-tertiary w-[60%] rounded-full transition-all duration-1000"></div>
+            </div>
+            <div class="mt-4 flex justify-between text-xs text-on-surface-variant uppercase tracking-widest">
+                <span>Started: Feb 01</span>
+                <span>Est. Completion: May 15</span>
+            </div>
+        </div>
+        <!-- Small Cards Row -->
+        <div class="flex gap-6">
+            <div class="flex-1 bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-secondary">workspace_premium</span>
+                </div>
+                <div>
+                    <h5 class="font-bold">Bench 100kg</h5>
+                    <p class="text-xs text-secondary uppercase font-black">Achieved!</p>
+                </div>
+            </div>
+            <div class="flex-1 bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 flex items-center gap-4 opacity-50 grayscale">
+                <div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+                    <span class="material-symbols-outlined">lock</span>
+                </div>
+                <div>
+                    <h5 class="font-bold">Marathon Finish</h5>
+                    <p class="text-xs text-on-surface-variant uppercase font-black">Unlocks at 60km run</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Visual CTA -->
+<section class="py-24 px-12">
+<div class="max-w-[1400px] mx-auto rounded-[3rem] overflow-hidden relative min-h-[500px] flex items-center p-20">
+    <img class="absolute inset-0 w-full h-full object-cover grayscale opacity-40" alt="Athletic person in dramatic dark gym environment with purple neon backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2ktJ1bpORbj-cKCyS4lNrVlwHUOkXSx1FO4wTIH_aWUXmKipUJSMda7UyPsUxIRWAs8utzclWpW-n2MpdM4eQ4kHjTcjdq6r0WJlMc1-jGbB791SIPPeX2IfCBXnK3p5_PsaYmm9vH4VFqVzPhu9yys5DMXMF1GBeG4Shburgn_9CY45LemMua_OhqKyTqO5OST9XT7xJ9KAk-aBSkHwmTe6vUd_YEj8cSxl19XJphdl-IsznyFJcosET0Qurm7pzk-eN8UUvbAY"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/80 to-transparent"></div>
+    <div class="relative z-10 max-w-2xl">
+        <h2 class="text-6xl font-black italic tracking-tighter mb-8">EVOLVE BEYOND<br/>THE ORDINARY.</h2>
+        <p class="text-on-surface-variant text-xl mb-10 leading-relaxed">FitTrack is not just a logger. It's a testament to your kinetic energy. Join the editorial elite.</p>
+        <a href="/signup" class="bg-primary text-on-primary-fixed px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-all shadow-2xl">JOIN FITTRACK</a>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-stone-950 w-full border-t border-stone-800/30 flex flex-col md:flex-row justify-between items-center px-12 py-12 mt-24">
+    <div class="text-xl font-bold text-stone-50 mb-8 md:mb-0">FITTRACK</div>
+    <div class="flex items-center gap-8 mb-8 md:mb-0">
+        <a href="/login" class="text-stone-500 hover:text-[#ff7eea] transition-colors text-[0.75rem] uppercase tracking-widest">Login</a>
+        <a href="/signup" class="text-stone-500 hover:text-[#ff7eea] transition-colors text-[0.75rem] uppercase tracking-widest">Get Started</a>
+    </div>
+    <div class="text-stone-500 text-[0.75rem] uppercase tracking-widest opacity-80">© 2024 FitTrack</div>
+</footer>
+
+<script>
+const navLinks = document.querySelectorAll('.nav-link');
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+function updateActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('text-[#ff7eea]', 'border-b-2', 'border-[#ff7eea]');
+        link.classList.add('text-stone-400');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('text-[#ff7eea]', 'border-b-2', 'border-[#ff7eea]');
+            link.classList.remove('text-stone-400');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+</script>
+</body></html>

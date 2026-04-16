@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitTrack | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#005d63",
+                    "inverse-surface": "#fcf9f8",
+                    "secondary-dim": "#a533ff",
+                    "on-tertiary-container": "#005359",
+                    "surface-container-low": "#131313",
+                    "error": "#ff6e84",
+                    "on-primary-fixed": "#000000",
+                    "surface-container": "#1a1919",
+                    "surface-variant": "#262626",
+                    "surface-container-lowest": "#000000",
+                    "secondary": "#c47fff",
+                    "on-primary-fixed-variant": "#55004f",
+                    "tertiary-container": "#00eefc",
+                    "inverse-primary": "#ad00a1",
+                    "primary-fixed-dim": "#f93ee6",
+                    "secondary-container": "#8c00e5",
+                    "inverse-on-surface": "#565555",
+                    "on-surface": "#ffffff",
+                    "secondary-fixed-dim": "#ddb3ff",
+                    "primary-dim": "#ff57eb",
+                    "primary": "#ff7eea",
+                    "on-error-container": "#ffb2b9",
+                    "surface-container-high": "#201f1f",
+                    "on-error": "#490013",
+                    "on-tertiary-fixed": "#003f43",
+                    "tertiary": "#8ff5ff",
+                    "surface-dim": "#0e0e0e",
+                    "outline": "#767575",
+                    "on-tertiary-fixed-variant": "#005e64",
+                    "background": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#7900c6",
+                    "tertiary-fixed": "#00eefc",
+                    "on-primary": "#590053",
+                    "outline-variant": "#484847",
+                    "on-secondary-container": "#fff5ff",
+                    "primary-container": "#ff5eeb",
+                    "surface": "#0e0e0e",
+                    "on-secondary-fixed": "#500086",
+                    "error-container": "#a70138",
+                    "error-dim": "#d73357",
+                    "tertiary-fixed-dim": "#00deec",
+                    "on-primary-container": "#450040",
+                    "surface-tint": "#ff7eea",
+                    "surface-bright": "#2c2c2c",
+                    "primary-fixed": "#ff5eeb",
+                    "on-background": "#ffffff",
+                    "on-surface-variant": "#adaaaa",
+                    "secondary-fixed": "#e7c5ff",
+                    "surface-container-highest": "#262626",
+                    "tertiary-dim": "#00deec",
+                    "on-secondary": "#340059"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .neon-glow {
+            box-shadow: 0 0 48px rgba(196, 127, 255, 0.08);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @media (max-width: 1024px) {
+            aside { position: static; width: 100%; height: auto; }
+            main { margin-left: 0 !important; padding: 1.25rem !important; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; align-items: flex-start !important; gap: 1rem; }
+            h2 { font-size: 2rem !important; line-height: 1.15 !important; }
+            .grid-cols-1.md\:grid-cols-4 { grid-template-columns: 1fr !important; }
+            .lg\:col-span-2, .lg\:col-span-3 { grid-column: span 1 / span 1 !important; }
+            .p-10, .p-12 { padding: 1.25rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary selection:text-on-primary min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-72 fixed left-0 top-0 z-50 bg-[#131313] flex flex-col py-8 border-r border-[#484847]/15">
+<div class="px-8 mb-12">
+<h1 class="text-xl font-black text-white tracking-tighter">FitTrack</h1>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Dashboard Active -->
+    <a class="flex items-center gap-4 text-[#ff7eea] font-bold py-3 px-6 bg-gradient-to-r from-[#ff7eea]/10 to-transparent border-r-2 border-[#ff7eea]" href="/dashboard">
+    <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+    <span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Dashboard</span>
+    </a>
+    <!-- Workouts Inactive -->
+    <a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/workout">
+    <span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="fitness_center">fitness_center</span>
+    <span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Workouts</span>
+    </a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/progress">
+    <span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="insights">insights</span>
+    <span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Progress</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/goals">
+    <span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="emoji_events">emoji_events</span>
+    <span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Goals</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all group" href="/profile">
+    <span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="person">person</span>
+    <span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Profile</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+    <button class="w-full bg-gradient-to-br from-[#ff7eea] to-[#c47fff] text-on-primary-fixed py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-primary/20 mb-8" onclick="window.location.href='/workout'">
+                    Start Workout
+                </button>
+    <a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white transition-colors" href="#" id="logout-btn" onclick="event.preventDefault();AuthService.logout()">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 p-12 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-16">
+<div class="space-y-2">
+<h2 class="text-5xl font-extrabold tracking-tighter text-white">Welcome back, <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary" id="username">Alex</span>.</h2>
+<p class="text-on-surface-variant text-lg">Your kinetic energy is up 12% from last week.</p>
+</div>
+<div class="bg-surface-container-low px-5 py-4 rounded-xl border border-outline-variant/10 min-w-[150px]">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">BMI</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-black text-tertiary" id="dashboard-bmi">--</span>
+<span class="text-sm text-on-surface-variant mb-1" id="dashboard-bmi-label">Add profile data</span>
+</div>
+</div>
+</header>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Total Workouts -->
+<div class="surface-container-low p-8 rounded-xl glass-card flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="fitness_center">fitness_center</span>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Total Workouts</p>
+        <h3 class="text-4xl font-black mt-2" id="total-workouts">0</h3>
+</div>
+<div class="flex items-center gap-2 text-tertiary text-sm relative z-10 mt-4">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+<span>+4 this week</span>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]" data-icon="fitness_center">fitness_center</span>
+</div>
+</div>
+<!-- Calories Burned -->
+<div class="surface-container-low p-8 rounded-xl glass-card flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4" data-icon="local_fire_department">local_fire_department</span>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Calories Burned</p>
+        <h3 class="text-4xl font-black mt-2" id="total-calories">0</h3>
+</div>
+<div class="flex items-center gap-2 text-tertiary text-sm relative z-10 mt-4">
+<span class="material-symbols-outlined text-xs" data-icon="bolt">bolt</span>
+<span>High Intensity</span>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]" data-icon="local_fire_department">local_fire_department</span>
+</div>
+</div>
+<!-- Active Goals -->
+<div class="surface-container-low p-8 rounded-xl glass-card flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4" data-icon="target">target</span>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Active Goals</p>
+<h3 class="text-4xl font-black mt-2" id="active-goals-count">0</h3>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm relative z-10 mt-4">
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[100%]"></div>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]" data-icon="emoji_events">emoji_events</span>
+</div>
+</div>
+<!-- Current Streak -->
+<div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-xl flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+<div class="relative z-10 text-on-primary-fixed">
+<span class="material-symbols-outlined text-3xl mb-4" data-icon="rebase_edit">rebase_edit</span>
+<p class="text-on-primary-fixed/70 text-xs font-bold uppercase tracking-widest">Current Streak</p>
+<h3 class="text-4xl font-black mt-2" id="streak-days">12 Days</h3>
+</div>
+<div class="bg-on-primary-fixed/10 py-1 px-3 rounded-full text-[10px] font-bold uppercase tracking-widest self-start text-on-primary-fixed relative z-10">
+                    Personal Record
+                </div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500 text-on-primary-fixed">
+<span class="material-symbols-outlined text-[120px]" data-icon="workspace_premium">workspace_premium</span>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 gap-8">
+<!-- Weekly Activity (Line Chart) -->
+<div class="surface-container p-10 rounded-xl glass-card neon-glow">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h4 class="text-2xl font-bold tracking-tight">Weekly Activity</h4>
+<p class="text-on-surface-variant text-sm">Active minutes across last 7 days</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-variant rounded-full text-xs font-bold" id="activity-week-btn">Week</button>
+<button class="px-4 py-2 text-on-surface-variant hover:text-white rounded-full text-xs font-bold" id="activity-month-btn">Month</button>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-4 px-2" id="activity-chart"></div>
+</div>
+</section>
+</main>
+<script src="/js/dashboard.js"></script>
+<script src="/js/auth.js"></script>
+</body></html>

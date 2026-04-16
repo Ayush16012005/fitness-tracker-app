@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitTrack | Progress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-tertiary": "#005d63", "inverse-surface": "#fcf9f8", "secondary-dim": "#a533ff",
+                    "on-tertiary-container": "#005359", "surface-container-low": "#131313", "error": "#ff6e84",
+                    "on-primary-fixed": "#000000", "surface-container": "#1a1919", "surface-variant": "#262626",
+                    "surface-container-lowest": "#000000", "secondary": "#c47fff", "on-primary-fixed-variant": "#55004f",
+                    "tertiary-container": "#00eefc", "inverse-primary": "#ad00a1", "primary-fixed-dim": "#f93ee6",
+                    "secondary-container": "#8c00e5", "inverse-on-surface": "#565555", "on-surface": "#ffffff",
+                    "secondary-fixed-dim": "#ddb3ff", "primary-dim": "#ff57eb", "primary": "#ff7eea",
+                    "on-error-container": "#ffb2b9", "surface-container-high": "#201f1f", "on-error": "#490013",
+                    "on-tertiary-fixed": "#003f43", "tertiary": "#8ff5ff", "surface-dim": "#0e0e0e",
+                    "outline": "#767575", "on-tertiary-fixed-variant": "#005e64", "background": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#7900c6", "tertiary-fixed": "#00eefc", "on-primary": "#590053",
+                    "outline-variant": "#484847", "on-secondary-container": "#fff5ff", "primary-container": "#ff5eeb",
+                    "surface": "#0e0e0e", "on-secondary-fixed": "#500086", "error-container": "#a70138",
+                    "error-dim": "#d73357", "tertiary-fixed-dim": "#00deec", "on-primary-container": "#450040",
+                    "surface-tint": "#ff7eea", "surface-bright": "#2c2c2c", "primary-fixed": "#ff5eeb",
+                    "on-background": "#ffffff", "on-surface-variant": "#adaaaa", "secondary-fixed": "#e7c5ff",
+                    "surface-container-highest": "#262626", "tertiary-dim": "#00deec", "on-secondary": "#340059"
+                },
+                "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Plus Jakarta Sans"], "label": ["Plus Jakarta Sans"] }
+            },
+        },
+    }
+</script>
+<style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0e0e0e; color: #ffffff; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-panel { background: rgba(38, 38, 38, 0.6); backdrop-filter: blur(24px); }
+    .neon-glow-primary { box-shadow: 0 0 20px rgba(255, 126, 234, 0.15); }
+    .kinetic-gradient { background: linear-gradient(135deg, #ff7eea 0%, #c47fff 100%); }
+    @media (max-width: 1024px) {
+        nav { position: static; width: 100%; height: auto; }
+        main { margin-left: 0 !important; padding: 1.25rem !important; }
+    }
+    @media (max-width: 768px) {
+        header { flex-direction: column; align-items: flex-start !important; gap: 1rem; }
+        h1 { font-size: 2rem !important; line-height: 1.15 !important; }
+        .grid.grid-cols-12 { grid-template-columns: 1fr !important; gap: 1rem !important; }
+        .p-10, .p-12 { padding: 1.25rem !important; }
+    }
+</style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar -->
+<nav class="h-screen w-72 fixed left-0 top-0 z-50 bg-[#131313] flex flex-col py-8 border-r border-[#484847]/15 font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">
+<div class="px-8 mb-12">
+<h1 class="text-xl font-black text-white tracking-tighter">FitTrack</h1>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all hover:translate-x-1 duration-200" href="/dashboard">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all hover:translate-x-1 duration-200" href="/workout">
+    <span class="material-symbols-outlined">fitness_center</span>
+    <span>Workouts</span>
+</a>
+<!-- Active: Progress -->
+<a class="flex items-center gap-4 text-[#ff7eea] font-bold py-3 px-6 bg-gradient-to-r from-[#ff7eea]/10 to-transparent border-r-2 border-[#ff7eea]" href="/progress">
+    <span class="material-symbols-outlined">insights</span>
+    <span>Progress</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all hover:translate-x-1 duration-200" href="/goals">
+    <span class="material-symbols-outlined">emoji_events</span>
+    <span>Goals</span>
+</a>
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all hover:translate-x-1 duration-200" href="/profile">
+    <span class="material-symbols-outlined">person</span>
+    <span>Profile</span>
+</a>
+</div>
+<div class="px-6 mb-8">
+<button onclick="window.location.href='/workout'" class="w-full kinetic-gradient text-on-primary-fixed font-bold py-4 rounded-full text-xs uppercase tracking-widest neon-glow-primary hover:brightness-110 transition-all active:scale-95">
+    Start Workout
+</button>
+</div>
+<div class="mt-auto border-t border-[#484847]/15 pt-6">
+<a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white transition-all" href="#" id="logout-btn" onclick="event.preventDefault();AuthService.logout()">
+    <span class="material-symbols-outlined">logout</span>
+    <span>Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen p-12">
+<!-- Header & Time Selection -->
+<header class="flex justify-between items-end mb-16">
+<div class="max-w-2xl">
+    <label class="label-md uppercase tracking-[0.2em] text-secondary font-bold mb-4 block">Biometric Analysis</label>
+    <h1 class="text-6xl font-extrabold tracking-tighter leading-none mb-6">Physical <span class="text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary">Evolution</span></h1>
+    <p class="text-on-surface-variant text-lg max-w-lg leading-relaxed">Deep-dive into your physiological trajectory. Every metric is a data point in your journey toward peak performance.</p>
+</div>
+</header>
+
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Weight Trend Card (Large) -->
+<section class="col-span-8 bg-surface-container-low rounded-xl p-10 relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+<div class="relative z-10">
+    <div class="flex justify-between items-start">
+        <div>
+            <h3 class="text-3xl font-bold tracking-tight mb-2">Activity Overview</h3>
+            <p class="text-on-surface-variant">Your recent workout history visualized.</p>
+        </div>
+        <div class="flex gap-2 items-center">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span class="label-md uppercase text-primary font-bold text-xs">Live</span>
+        </div>
+    </div>
+</div>
+<!-- Bar Chart Visualization -->
+<div class="absolute bottom-0 left-0 w-full h-2/3 px-4 pb-4">
+    <div class="w-full h-full flex items-end gap-1 overflow-hidden opacity-80">
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 40%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 55%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 42%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 38%"></div>
+        <div class="flex-1 bg-primary/60 rounded-t-lg transition-all" style="height: 65%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 58%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 48%"></div>
+        <div class="flex-1 bg-primary rounded-t-lg transition-all" style="height: 72%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 50%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 45%"></div>
+        <div class="flex-1 bg-primary/60 rounded-t-lg transition-all" style="height: 60%"></div>
+        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 35%"></div>
+    </div>
+</div>
+</section>
+
+<!-- Quick Stats (Small) -->
+<section class="col-span-4 flex flex-col gap-6">
+    <div class="bg-surface-container rounded-xl p-8 flex flex-col gap-2 flex-1">
+        <span class="material-symbols-outlined text-primary text-3xl">fitness_center</span>
+        <p class="text-on-surface-variant text-sm uppercase tracking-widest font-bold mt-2">Total Workouts</p>
+        <p class="text-5xl font-black text-white" id="progress-total-workouts">—</p>
+    </div>
+    <div class="bg-surface-container rounded-xl p-8 flex flex-col gap-2 flex-1">
+        <span class="material-symbols-outlined text-secondary text-3xl">timer</span>
+        <p class="text-on-surface-variant text-sm uppercase tracking-widest font-bold mt-2">Total Duration</p>
+        <p class="text-5xl font-black text-white" id="progress-total-duration">—</p>
+    </div>
+    <div class="bg-surface-container rounded-xl p-8 flex flex-col gap-2 flex-1">
+        <span class="material-symbols-outlined text-tertiary text-3xl">local_fire_department</span>
+        <p class="text-on-surface-variant text-sm uppercase tracking-widest font-bold mt-2">Calories Burned</p>
+        <p class="text-5xl font-black text-white" id="progress-total-calories">—</p>
+    </div>
+</section>
+
+<!-- Recent Workouts Section -->
+<section class="col-span-12 bg-surface-container-low rounded-xl p-10">
+<h3 class="text-2xl font-bold tracking-tight mb-8">Recent Activity</h3>
+<div id="progress-recent-workouts">
+    <div class="py-8 text-center">
+        <span class="material-symbols-outlined text-5xl text-on-surface-variant mb-3 block">history</span>
+        <p class="text-on-surface-variant">Loading your activity history...</p>
+    </div>
+</div>
+</section>
+</div>
+
+<!-- Footer -->
+<footer class="mt-20 pt-10 border-t border-outline-variant/10 flex justify-between items-center text-[10px] text-on-surface-variant/40 uppercase tracking-[0.3em]">
+    <span>Data synced in real-time</span>
+    <span>© 2024 FitTrack</span>
+    <div class="flex gap-8">
+        <a class="hover:text-primary transition-colors" href="#">Privacy</a>
+        <a class="hover:text-primary transition-colors" href="#">Terms</a>
+    </div>
+</footer>
+</main>
+<script src="/js/auth.js"></script>
+<script src="/js/progress.js"></script>
+</body></html>
