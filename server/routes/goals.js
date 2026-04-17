@@ -4,6 +4,7 @@ const { requireAuth } = require('../middleware/auth');
 const { supabaseRestFetch } = require('../lib/supabase');
 
 const GOALS_TABLE = 'goals';
+const ALLOWED_STATUSES = new Set(['ongoing', 'completed', 'failed']);
 
 router.get('/', requireAuth, async (req, res) => {
     const userId = req.user.id;
@@ -89,7 +90,12 @@ router.patch('/:id', requireAuth, async (req, res) => {
     try {
         const updates = {};
         if (current_value !== undefined) updates.current_value = current_value;
-        if (status !== undefined) updates.status = status;
+        if (status !== undefined) {
+            if (!ALLOWED_STATUSES.has(status)) {
+                return res.status(400).json({ error: 'Invalid goal status' });
+            }
+            updates.status = status;
+        }
         
         const response = await supabaseRestFetch(
             `${GOALS_TABLE}?id=eq.${id}&user_id=eq.${userId}`,
@@ -114,6 +120,35 @@ router.patch('/:id', requireAuth, async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
+    }
+});
+
+router.delete('/:id', requireAuth, async (req, res) => {
+    const userId = req.user.id;
+    const { id } = req.params;
+
+    try {
+        const response = await supabaseRestFetch(
+            `${GOALS_TABLE}?id=eq.${id}&user_id=eq.${userId}`,
+            {
+                method: 'DELETE',
+                admin: true,
+                headers: {
+                    'Prefer': 'return=representation'
+                }
+            },
+            req.accessToken
+        );
+
+        const data = await response.json().catch(() => ([]));
+
+        if (response.ok) {
+            return res.json({ success: true, data: data[0] || null });
+        }
+
+        return res.status(400).json({ error: 'Failed to delete goal' });
+    } catch (error) {
+        return res.status(500).json({ error: 'Server error' });
     }
 });
 

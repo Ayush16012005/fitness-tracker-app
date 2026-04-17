@@ -58,7 +58,7 @@
 <!-- SideNavBar -->
 <nav class="h-screen w-72 fixed left-0 top-0 z-50 bg-[#131313] flex flex-col py-8 border-r border-[#484847]/15 font-['Plus_Jakarta_Sans'] uppercase tracking-[0.05em] text-[0.75rem] font-medium">
 <div class="px-8 mb-12">
-<h1 class="text-xl font-black text-white tracking-tighter">FitTrack</h1>
+<h1 class="text-xl font-black text-white tracking-tighter normal-case">FitTrack</h1>
 </div>
 <div class="flex flex-col gap-2 flex-grow">
 <a class="flex items-center gap-4 text-[#adaaaa] py-3 px-6 hover:text-white hover:bg-[#1a1919] transition-all hover:translate-x-1 duration-200" href="/dashboard">
@@ -114,29 +114,24 @@
     <div class="flex justify-between items-start">
         <div>
             <h3 class="text-3xl font-bold tracking-tight mb-2">Activity Overview</h3>
-            <p class="text-on-surface-variant">Your recent workout history visualized.</p>
-        </div>
-        <div class="flex gap-2 items-center">
-            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span class="label-md uppercase text-primary font-bold text-xs">Live</span>
+            <p class="text-on-surface-variant" id="progress-activity-summary">Your recent workout history visualized.</p>
         </div>
     </div>
 </div>
-<!-- Bar Chart Visualization -->
-<div class="absolute bottom-0 left-0 w-full h-2/3 px-4 pb-4">
-    <div class="w-full h-full flex items-end gap-1 overflow-hidden opacity-80">
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 40%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 55%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 42%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 38%"></div>
-        <div class="flex-1 bg-primary/60 rounded-t-lg transition-all" style="height: 65%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 58%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 48%"></div>
-        <div class="flex-1 bg-primary rounded-t-lg transition-all" style="height: 72%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 50%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 45%"></div>
-        <div class="flex-1 bg-primary/60 rounded-t-lg transition-all" style="height: 60%"></div>
-        <div class="flex-1 bg-surface-container-highest rounded-t-lg transition-all hover:bg-primary/40" style="height: 35%"></div>
+<div class="mt-10 grid grid-cols-[auto_1fr] gap-6 items-end min-h-[250px]">
+    <div class="flex h-full flex-col justify-between pb-8 text-[10px] uppercase tracking-[0.25em] text-on-surface-variant/55">
+        <span id="progress-activity-max-label">0 min</span>
+        <span id="progress-activity-mid-label">0 min</span>
+        <span>0 min</span>
+    </div>
+    <div class="relative h-full">
+        <div class="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(255,126,234,0.12),transparent_55%)] pointer-events-none"></div>
+        <div class="absolute inset-x-0 bottom-8 top-0 flex flex-col justify-between pointer-events-none">
+            <div class="border-t border-white/10"></div>
+            <div class="border-t border-white/10"></div>
+            <div class="border-t border-white/10"></div>
+        </div>
+        <div id="progress-activity-chart" class="relative h-full flex items-stretch gap-3"></div>
     </div>
 </div>
 </section>

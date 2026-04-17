@@ -81,11 +81,20 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <section class="lg:col-span-8">
-        <h3 class="text-2xl font-bold tracking-tight mb-8">Active Goals</h3>
+        <div class="flex flex-col gap-5 mb-8">
+          <div class="inline-flex w-fit rounded-full bg-surface-container p-1">
+            <button class="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-on-primary-fixed bg-gradient-to-r from-primary to-secondary transition-all" data-goals-tab="ongoing" type="button">Ongoing Goals</button>
+            <button class="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-on-surface-variant bg-surface-container-low transition-all" data-goals-tab="completed" type="button">Completed Goals</button>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold tracking-tight" id="goals-section-title">Ongoing Goals</h3>
+            <p class="text-sm text-rose-300 mt-3 min-h-5" id="goal-action-error"></p>
+          </div>
+        </div>
         <div id="goals-grid" class="space-y-6">
           <div class="bg-surface-container-low rounded-xl p-10 text-center">
             <span class="material-symbols-outlined text-5xl text-on-surface-variant mb-3 block">emoji_events</span>
-            <p class="text-on-surface-variant">No goals yet — set your first goal to get started!</p>
+            <p class="text-on-surface-variant">No goals yet. Set your first goal to get started.</p>
           </div>
         </div>
       </section>

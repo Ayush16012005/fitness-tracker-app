@@ -93,7 +93,7 @@ async function fetchGoalsCount() {
         });
         const result = await response.json();
         if (result.success && Array.isArray(result.data)) {
-            return result.data.filter((g) => g.status !== 'completed').length;
+            return result.data.filter((g) => g.status !== 'completed' && g.status !== 'failed').length;
         }
         return 0;
     } catch (error) {

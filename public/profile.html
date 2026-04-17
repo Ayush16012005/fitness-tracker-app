@@ -103,9 +103,6 @@ Start Workout
 </div>
 <div>
 <h1 class="text-5xl font-extrabold tracking-tighter mb-2" id="profile-name">Loading...</h1>
-<div class="flex items-center gap-4">
-<span class="bg-surface-container-highest px-4 py-1 rounded-full text-[0.7rem] font-bold uppercase tracking-widest text-tertiary">FitTrack Member</span>
-</div>
 </div>
 </div>
 <div class="flex gap-4">
@@ -143,7 +140,7 @@ Start Workout
 <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
 <div>
 <h2 class="text-2xl font-bold tracking-tight">Body Metrics</h2>
-<p class="text-sm text-on-surface-variant mt-2">Update your name, height, and weight. The app stores everything in metric and converts it in the UI when needed.</p>
+<p class="text-sm text-on-surface-variant mt-2">Update your displayed name, height, and weight. The app stores everything in metric and converts it in the UI when needed.</p>
 </div>
 <div class="flex items-center gap-2 bg-surface-container-high p-2 rounded-full">
 <button id="unit-metric-btn" type="button" class="px-4 py-2 rounded-full bg-primary text-on-primary-fixed font-bold text-xs uppercase tracking-widest">Metric</button>
@@ -153,8 +150,8 @@ Start Workout
 
 <form id="profile-form" class="space-y-6">
 <div>
-<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3" for="full-name">Change Name</label>
-<input id="full-name" type="text" class="w-full rounded-xl border border-outline-variant/20 bg-surface-container px-4 py-4 text-white focus:border-primary focus:ring-primary" placeholder="Your name"/>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3" for="full-name">Displayed Name</label>
+<input id="full-name" type="text" class="w-full rounded-xl border border-outline-variant/20 bg-surface-container px-4 py-4 text-white focus:border-primary focus:ring-primary" placeholder="How your name appears in the app"/>
 </div>
 
 <div id="metric-fields" class="grid grid-cols-2 gap-6">
@@ -220,13 +217,6 @@ Start Workout
 <p class="text-lg font-bold text-white" id="profile-sidebar-name">Loading...</p>
 </div>
 <span class="material-symbols-outlined text-primary">face</span>
-</div>
-<div class="flex items-center justify-between">
-<div>
-<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Member Status</p>
-<p class="text-sm font-medium text-white">FitTrack Member</p>
-</div>
-<span class="material-symbols-outlined text-tertiary">verified</span>
 </div>
 <div class="flex items-center justify-between">
 <div>

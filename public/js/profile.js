@@ -104,6 +104,18 @@ function formatBmi(bmi) {
     return bmi.toFixed(1);
 }
 
+function formatDuration(totalMinutes) {
+    const minutes = Number(totalMinutes || 0);
+    if (minutes < 60) return `${minutes} min`;
+
+    const hours = minutes / 60;
+    if (Number.isInteger(hours)) {
+        return `${hours} hr${hours === 1 ? '' : 's'}`;
+    }
+
+    return `${hours.toFixed(1)} hrs`;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     if (!localStorage.getItem('supabase_token')) {
         window.location.href = '/login';
@@ -233,7 +245,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (profileStreak) profileStreak.textContent = String(calculateStreakDays(workouts));
 
     setText('profile-total-workouts', String(stats?.totalWorkouts || 0));
-    setText('profile-total-duration', `${stats?.totalDuration || 0} min`);
+    setText('profile-total-duration', formatDuration(stats?.totalDuration || 0));
     setText('profile-total-calories', String(stats?.totalCalories || 0));
     setText('profile-bmi', formatBmi(calculateBmi(currentProfile?.weight, currentProfile?.height)));
 
