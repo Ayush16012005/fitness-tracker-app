@@ -5,6 +5,9 @@ node_modules/
 !.env.example
 playwright-add-goal.js
 docs/superpowers
+server/
+tests/
+/*.md
 
 .cursor/
 .playwright-mcp/
